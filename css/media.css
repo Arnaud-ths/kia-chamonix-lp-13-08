@@ -1,0 +1,355 @@
+/* ==========================================================================
+   Responsive - Kia x Chamonix-Mont-Blanc x Sun Valley
+   La maquette Figma est fournie en desktop 1440 uniquement.
+   Les paliers ci-dessous sont une adaptation fluide, a valider avec le design.
+   ========================================================================== */
+
+/* ---------- < 1440px : la carte intro et les blocs suivent la fenetre ---------- */
+@media (max-width: 1439px) {
+  .intro {
+    width: calc(100% - 80px);
+    max-width: var(--card);
+  }
+
+  .site-footer {
+    padding: 45px 40px;
+  }
+
+  .site-footer__inner {
+    gap: 60px;
+  }
+}
+
+/* ---------- < 1100px : les blocs "univers" passent en colonne ---------- */
+@media (max-width: 1099px) {
+  .push,
+  .push--reverse {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* le texte repasse toujours sous l'image */
+  .push--reverse .push__txt {
+    order: 2;
+  }
+
+  .push__media img,
+  .push__media--kiadrive,
+  .push__media--duo {
+    width: 100%;
+    max-width: 589px;
+    height: auto;
+  }
+
+  .push__media--duo img:nth-child(1),
+  .push__media--duo img:nth-child(2) {
+    width: 50%;
+    height: auto;
+  }
+
+  .push__media--kiadrive .push__map {
+    width: 52.5%;
+    height: auto;
+  }
+
+  .push__media--kiadrive .push__photo {
+    width: 47.5%;
+    height: auto;
+  }
+
+  .push__txt {
+    width: 100%;
+    max-width: 589px;
+  }
+
+  /* sur une ligne, le footer depasse a partir d'environ 1090px */
+  .site-footer__inner {
+    gap: 40px;
+  }
+
+  .site-footer__links {
+    white-space: normal;
+    text-align: center;
+    line-height: 26px;
+  }
+}
+
+/* ---------- Tablette ---------- */
+@media (max-width: 900px) {
+  :root {
+    --hero-h: 480px;
+    --hero-overlap: 100px;
+  }
+
+  .merci {
+    padding-top: calc(var(--hero-h) - 100px);
+  }
+
+  .merci__img {
+    --overlap: 100px;
+  }
+
+  .ai-notice {
+    max-width: calc(100% - 40px);
+  }
+
+  .intro {
+    width: calc(100% - 40px);
+    padding: 40px 0;
+  }
+
+  .intro__inner {
+    padding: 0 40px;
+  }
+
+  .intro__title-lg {
+    font-size: 34px;
+  }
+
+  .intro__title-sm {
+    font-size: 26px;
+  }
+
+  .intro__lead {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .lots__title {
+    font-size: 26px;
+    line-height: 30px;
+  }
+
+  /* le debordement de 864px n'a de sens qu'en desktop */
+  .lots__hint {
+    width: 100%;
+  }
+
+  .univers__intro h2 {
+    font-size: 34px;
+  }
+
+  .quiz,
+  .quiz-form {
+    width: 100%;
+    padding: 30px 24px;
+  }
+
+  .quiz__head,
+  .quiz__progress,
+  .quiz__answers,
+  .quiz__error,
+  .field-group,
+  .quiz-form__error,
+  .quiz-form__privacy {
+    width: 100%;
+  }
+
+  .quiz__question {
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .quiz__answer {
+    padding: 12px 16px;
+  }
+
+  .merci__card {
+    width: calc(100% - 40px);
+    padding: 40px 24px;
+    gap: 30px;
+  }
+
+  /* .quiz-section applique deja ses propres marges laterales */
+  .quiz-success {
+    width: 100%;
+    padding: 40px 24px;
+    gap: 30px;
+  }
+
+  .merci__card h1,
+  .quiz-success h2 {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  /* les trois CTA s'empilent et s'alignent sur la même largeur */
+  .merci__ctas {
+    flex-direction: column;
+    align-self: stretch;
+    gap: 12px;
+  }
+
+  .merci__ctas .cta {
+    justify-content: center;
+  }
+
+  .site-footer__inner {
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .site-footer__links {
+    white-space: normal;
+    line-height: 26px;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 640px) {
+  .site-header {
+    height: 70px;
+  }
+
+  .logos {
+    gap: 12px;
+  }
+
+  .logos__kia img {
+    width: 80px;
+  }
+
+  .logos__chamonix img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .logos__sunvalley img {
+    width: 24px;
+    height: 39.22px;
+  }
+
+  :root {
+    --hero-h: 340px;
+    --hero-overlap: 80px;
+  }
+
+  .merci {
+    padding-top: calc(var(--hero-h) - 80px);
+  }
+
+  .merci__img {
+    --overlap: 80px;
+  }
+
+  .ai-notice {
+    max-width: calc(100% - 24px);
+    bottom: calc(var(--overlap) + 10px);
+    font-size: 10px;
+    line-height: 14px;
+  }
+
+  .intro {
+    width: calc(100% - 24px);
+  }
+
+  .intro__inner {
+    padding: 0 20px;
+    gap: 24px;
+  }
+
+  .intro__title-lg {
+    font-size: 26px;
+  }
+
+  .intro__title-sm {
+    font-size: 20px;
+  }
+
+  .lots {
+    gap: 24px;
+  }
+
+  .lots__item {
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  /* Reduction homothetique : les ratios des viewBox sont conserves */
+  .lots__icon {
+    width: 44px;
+  }
+
+  .lots__list li:nth-child(1) .lots__icon { height: 36.04px; }
+  .lots__list li:nth-child(2) .lots__icon { height: 28.15px; }
+  .lots__list li:nth-child(3) .lots__icon { height: 38.99px; }
+
+  .lots__hint {
+    align-items: flex-start;
+    width: 100%;
+    text-align: left;
+  }
+
+  .lots__hint-icon {
+    width: 32.03px;
+    height: 22.96px;
+    margin: 0 6.45px;
+  }
+
+  .quiz-section {
+    padding: 30px 12px 50px;
+  }
+
+  .quiz {
+    gap: 28px;
+  }
+
+  .quiz__num {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+
+  .quiz__question {
+    font-size: 18px;
+    line-height: 26px;
+  }
+
+  .quiz-form {
+    padding: 30px 20px;
+  }
+
+  /* les paires de champs passent en pile */
+  .row {
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .civilite {
+    gap: 28px;
+  }
+
+  .checkbox {
+    align-items: flex-start;
+  }
+
+  .checkbox__mark {
+    margin-top: 5px;
+  }
+
+  .univers__intro {
+    padding: 50px 20px 24px;
+  }
+
+  .univers__intro h2 {
+    font-size: 26px;
+  }
+
+  .univers__intro p {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .univers__list {
+    gap: 50px;
+    padding: 0 20px;
+  }
+
+  .push__txt h3 {
+    font-size: 22px;
+  }
+
+  .site-footer {
+    padding: 35px 20px;
+  }
+}

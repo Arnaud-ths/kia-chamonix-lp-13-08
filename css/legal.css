@@ -1,0 +1,283 @@
+/* Les pages legales utilisent Kia Signature comme le reste du site.
+   Les noms de familles historiques ("KIA Light/Regular/Bold") sont conserves
+   et pointent desormais sur Kia Signature : le reste de la feuille de style
+   n'a pas eu besoin d'etre touche. */
+@font-face {
+	font-family: 'KIA Light';
+	src: url('../fonts/KiaSignature-Light.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+  }
+
+  @font-face {
+	font-family: 'KIA Regular';
+	src: url('../fonts/KiaSignature-Regular.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+  }
+
+  @font-face {
+	font-family: 'KIA Bold';
+	src: url('../fonts/KiaSignature-Bold.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+  }
+
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "KIA Regular", Arial, sans-serif;
+}
+
+#nav {
+	background: #05141F;
+	width: 100%;
+	height: 80px;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#nav #links a {
+	text-decoration : none;
+	color: white;
+	padding-left: 60px;
+}
+
+.nav-links {
+	font-weight: 600;
+}
+
+#logo img {
+	width:100px;
+}
+
+#links {
+	font-size: 15px;
+}
+
+#nav_container {
+	width: 100%;
+	max-width: 1200px;
+	display: flex;
+	align-items: center;
+	justify-content: left;
+}
+
+
+#container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 30px;
+}
+
+#encadre {
+	width: 75%;
+	max-width: 1200px;
+	background: white;
+	text-align: left;
+}
+
+#encadre h2 {
+	font-size: 42px;
+	line-height: 60px;
+	padding: 60px 0px 10px;
+}
+
+#encadre h3 {
+	font-size: 20px;
+	padding: 40px 0px 10px;
+}
+
+#encadre p {
+	font-size: 15px;
+	line-height: 20px;
+}
+
+/* le reset global supprime puces et retrait : on les rétablit ici */
+#encadre ul {
+	margin: 10px 0;
+	padding-left: 22px;
+	list-style: disc;
+}
+
+#encadre li {
+	font-size: 15px;
+	line-height: 20px;
+	margin-bottom: 8px;
+}
+
+#encadre a {
+	color: inherit;
+}
+ 
+
+
+#footer {
+	color: white;
+	width: 100%;
+	bottom: 0;
+	background: #05141F;
+	text-align: center;
+	height:80px;
+	display: flex;
+	justify-content: center;
+	align-items: space-between;
+}
+
+#footer_container {
+	width: 100%;
+	max-width: 1200px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 30px;
+}
+
+#footer_links {
+	display: flex;
+	font-size: 12px;
+	align-items: center;
+	justify-content: center;
+}
+
+#right_block {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#footer_sentence {
+	padding-right: 30px;
+}
+
+#footer_links a {
+	padding: 0px 8px 0px 8px;
+	text-decoration: none;
+	color: white;
+}
+#footer_icons a {
+	padding: 0px 10px;
+}
+
+@media screen and (max-width: 1440px) {
+ 
+	#footer {
+		flex-direction: column;
+		height: auto;
+	}
+
+	#footer_container {
+		width: 100%;
+		flex-direction: column;
+		max-width: 100%;
+	}
+
+	#footer_container #logo {
+		padding: 20px 0px 10px;
+	}
+
+	#right_block {
+		flex-direction: column;
+	}
+
+	#footer_sentence {
+		padding: 0px 0px 20px 0px;
+	}
+
+	#footer_links {
+		width: 95%;
+		justify-content: center;
+		flex-wrap: wrap;
+		padding: 0 0 20px 0;
+	}
+	#footer_icons{
+		padding-bottom: 20px;
+	}
+
+	#footer_links a {
+		padding: 5px 10px;
+	}
+
+}
+
+
+
+@media (max-width: 768px) {
+	#nav {
+		height: auto;
+	}
+
+	#logo {
+		padding: 10px 0px;
+	}
+
+	#nav_container {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	#container {
+		padding: 0 15px 150px 15px;
+		padding-bottom: 150px;
+	}
+
+	#links {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+
+	#nav #links a {
+		padding: 20px 0px;
+	}
+
+	a .nav-links {
+		width: 50%;
+	}
+
+	#footer_links {
+		padding: 0px 0px 20px;
+	}
+
+
+
+	#photo {
+		height: 24vh;
+	}
+
+	#photo img {
+		height: 24vh;
+	}
+
+
+
+
+
+
+
+
+	#encadre {
+		width: 450px;
+		top: -30px;
+		padding: 0px;
+	}
+
+	#encadre h2 {
+		padding: 20px 0px 0px;
+	}
+
+	#encadre h3 {
+		padding: 20px 0px 10px;
+	}  
+}

@@ -1,0 +1,988 @@
+/* ==========================================================================
+   Kia x Chamonix-Mont-Blanc x Sun Valley - Jeu concours 2026
+   Maquette Figma : KIA - Design System Newsletter
+     - Question  : node 24881-3138
+     - Formulaire: node 26153-22459 (bloc 26153:22538)
+     - Merci     : node 24881-4671
+   ========================================================================== */
+
+/* ---------- Polices : Kia Signature (design system) ---------- */
+@font-face {
+  font-family: "Kia Signature";
+  src: url("../fonts/KiaSignature-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kia Signature";
+  src: url("../fonts/KiaSignature-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kia Signature";
+  src: url("../fonts/KiaSignature-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Tokens design system ---------- */
+:root {
+  --kia-midnight: #05141f;  /* Primary / Kia Midnight Black */
+  --kia-grey: #f0f0f4;      /* Secondary / Grey            */
+  --kia-white: #ffffff;     /* Primary / Kia Polar White   */
+  --field-border: #6b747b;
+  --field-placeholder: #808386;
+
+  /* Kia Signature sur tout le site. Les familles citees par le design system
+     Figma (Arial pour Headlines/H2/Bold, Helvetica pour les titres de section)
+     ne servent plus que de fallback. */
+  --font-base: "Kia Signature", Arial, Helvetica, sans-serif;
+  --font-headline: "Kia Signature", Arial, Helvetica, sans-serif;
+
+  --page-max: 1920px; /* largeur maximale de la page */
+  --card: 1028px;     /* carte blanche intro / merci */
+  --col: 732px;       /* colonne quiz et formulaire */
+  --hero-h: 720px;    /* hauteur de l'image hero */
+  --hero-overlap: 130px; /* recouvrement de la carte intro sur le hero */
+}
+
+/* ---------- Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* couleur des marges au-dela de 1920px */
+  background: var(--kia-grey);
+}
+
+/* Respect du reglage systeme "reduire les animations" */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  font-family: var(--font-base);
+  color: var(--kia-midnight);
+  background: var(--kia-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   CTA
+   ========================================================================== */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 20px;
+  background: var(--kia-midnight);
+  border: none;
+  color: var(--kia-white);
+  font-family: var(--font-base);
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.cta:hover {
+  opacity: 0.85;
+}
+
+/* Emplacement 16x16 de la maquette ; le glyphe garde son ratio (10.09 x 16)
+   et se centre dedans, comme l'inset 18.5% / 18.42% du design. */
+.cta__arrow {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.cta--outline {
+  border: 1px solid var(--kia-white);
+}
+
+.cta:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Header + logos
+   ========================================================================== */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 89px;
+  background: var(--kia-midnight);
+}
+
+.logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.logos__sep {
+  width: 1px;
+  height: 25px;
+  background: var(--kia-white);
+  opacity: 0.6;
+}
+
+.logos__kia img {
+  width: 100px;
+  height: auto;
+}
+
+.logos__chamonix img {
+  width: 47px;
+  height: 47px;
+}
+
+.logos__sunvalley img {
+  width: 29px;
+  height: 47.39px;
+}
+
+/* Variante footer */
+.logos--sm {
+  gap: 11px;
+  width: 190px;
+}
+
+.logos--sm .logos__sep {
+  height: 18px;
+}
+
+.logos--sm .logos__kia img {
+  width: 73px;
+}
+
+.logos--sm .logos__chamonix img {
+  width: 34.35px;
+  height: 34.35px;
+}
+
+.logos--sm .logos__sunvalley img {
+  width: 21.19px;
+  height: 34.63px;
+}
+
+/* ==========================================================================
+   Hero + intro
+   ========================================================================== */
+/* la carte intro recouvre le bas du hero de --hero-overlap */
+.hero {
+  position: relative;
+  padding-top: calc(var(--hero-h) - var(--hero-overlap));
+  background: var(--kia-grey);
+}
+
+.hero__img {
+  --overlap: var(--hero-overlap);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--hero-h);
+  background: url("../images/hero-chamonix.png") center center / cover no-repeat;
+}
+
+.hero__img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 64.14%, var(--kia-grey) 89.38%);
+}
+
+/* Mention IA posee en bas du visuel, juste au-dessus de la carte blanche.
+   --overlap = de combien la carte recouvre le visuel (voir .hero / .merci) :
+   la mention se cale au-dessus de ce recouvrement pour rester visible.
+   Texte fonce : a cette hauteur le degrade vers le gris a deja eclairci
+   l'image. */
+.ai-notice {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: calc(var(--overlap) + 14px);
+  transform: translateX(-50%);
+  width: var(--card);
+  max-width: calc(100% - 48px);
+  font-family: var(--font-base);
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 15px;
+  text-align: left;
+  color: var(--kia-midnight);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+.intro {
+  position: relative;
+  width: var(--card);
+  margin: 0 auto;
+  padding: 50px 0;
+  background: var(--kia-white);
+}
+
+.intro__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 0 90px;
+}
+
+/* max-width indispensable : le parent est en align-items:center, donc ce bloc
+   se dimensionne sur son contenu (848px) et les max-width des enfants se
+   resoudraient contre 848px au lieu de la largeur reelle disponible. */
+.intro__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 100%;
+  text-align: center;
+}
+
+.intro__title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 848px;
+  max-width: 100%;
+  font-weight: 700;
+}
+
+.intro__title-lg {
+  font-size: 45px;
+  line-height: normal;
+}
+
+.intro__title-sm {
+  font-size: 36px;
+  line-height: normal;
+}
+
+.intro__lead {
+  width: 787px;
+  max-width: 100%;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+/* ---------- Lots ---------- */
+.lots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 848px;
+  max-width: 100%;
+}
+
+.lots__title {
+  font-family: var(--font-headline);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 34px;
+  text-align: center;
+}
+
+.lots__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  list-style: none;
+}
+
+.lots__item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.lots__item p {
+  font-size: 15px;
+  line-height: 23px;
+}
+
+/* Chaque pictogramme garde ses dimensions propres (viewBox Figma) */
+.lots__icon {
+  flex-shrink: 0;
+  width: 60px;
+}
+
+.lots__list li:nth-child(1) .lots__icon { height: 49.14px; }
+.lots__list li:nth-child(2) .lots__icon { height: 38.38px; }
+.lots__list li:nth-child(3) .lots__icon { height: 53.16px; }
+
+.lots__legal {
+  font-size: 15px;
+  line-height: 25px;
+}
+
+/* Le design fait deborder cette ligne de 8px de chaque cote du bloc (864 > 848),
+   ce qui laisse 796px au texte et le garde sur une seule ligne. */
+.lots__hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 864px;
+  font-size: 15px;
+  line-height: 25px;
+}
+
+/* Loupe : glyphe 42.71 x 30.61, centre dans l'emplacement de 60px du design */
+.lots__hint-icon {
+  flex-shrink: 0;
+  width: 42.71px;
+  height: 30.61px;
+  margin: 0 8.6px;
+}
+
+/* ==========================================================================
+   Quiz + formulaire
+   ========================================================================== */
+.quiz-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 80px;
+}
+
+.quiz-section__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(240, 240, 244, 0.2), var(--kia-grey)),
+    url("../images/bg-mountains.png") center bottom / cover no-repeat,
+    var(--kia-grey);
+}
+
+/* ---------- Carte question ---------- */
+.quiz {
+  position: relative;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 41px;
+  padding: 40px 60px;
+  background: var(--kia-midnight);
+  color: var(--kia-white);
+}
+
+.quiz--active {
+  display: flex;
+}
+
+.quiz__head {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: var(--col);
+}
+
+.quiz__num {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+}
+
+.quiz__question {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.quiz__progress {
+  width: var(--col);
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.quiz__progress-fill {
+  height: 100%;
+  background: var(--kia-white);
+}
+
+.quiz__answers {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: var(--col);
+}
+
+.quiz__answer {
+  width: 100%;
+  padding: 10px 20px;
+  background: transparent;
+  border: 2px solid var(--kia-white);
+  color: var(--kia-white);
+  font-family: var(--font-base);
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.quiz__answer:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.quiz__answer.is-selected {
+  background: var(--kia-white);
+  color: var(--kia-midnight);
+  font-weight: 700;
+}
+
+.quiz__error,
+.quiz-form__error {
+  display: none;
+  width: var(--col);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.quiz__error {
+  margin-top: -25px;
+  color: #ff9a9a;
+}
+
+.quiz-form__error {
+  color: #c8102e;
+}
+
+.quiz__error.is-visible,
+.quiz-form__error.is-visible {
+  display: block;
+}
+
+/* ---------- Carte formulaire ---------- */
+.quiz-form {
+  position: relative;
+  display: none;
+  padding: 50px 60px;
+  background: var(--kia-white);
+}
+
+.quiz-form.is-active {
+  display: block;
+}
+
+.quiz-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 34px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  width: var(--col);
+}
+
+.civilite {
+  display: flex;
+  align-items: center;
+  gap: 39px;
+}
+
+.row {
+  display: flex;
+  gap: 28px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.field label {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.field input {
+  width: 100%;
+  padding: 10px 15px;
+  background: var(--kia-white);
+  border: 1px solid var(--field-border);
+  border-radius: 0;
+  color: var(--kia-midnight);
+  font-family: var(--font-base);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.field input::placeholder {
+  color: var(--field-placeholder);
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--kia-midnight);
+}
+
+.field input.is-invalid {
+  border-color: #c8102e;
+}
+
+/* ---------- Radio ---------- */
+.radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.radio input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio__mark {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  border: 1px solid var(--kia-midnight);
+  border-radius: 50%;
+}
+
+.radio input:checked + .radio__mark {
+  border-width: 4px;
+}
+
+.radio input:focus-visible + .radio__mark {
+  outline: 2px solid var(--kia-midnight);
+  outline-offset: 2px;
+}
+
+.radio__label {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+/* ---------- Checkbox ---------- */
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox__mark {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  border: 1px solid var(--kia-midnight);
+  transition: background-color 0.15s ease;
+}
+
+/* etat coche : carre plein, pas de coche */
+.checkbox input:checked + .checkbox__mark {
+  background: var(--kia-midnight);
+}
+
+.checkbox input:focus-visible + .checkbox__mark {
+  outline: 2px solid var(--kia-midnight);
+  outline-offset: 2px;
+}
+
+.checkbox__mark.is-invalid {
+  border-color: #c8102e;
+}
+
+.checkbox__label {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.checkbox__label a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* Meme gouttiere que .field-group : les quatre cases a cocher et leur note
+   suivent ainsi un rythme unique. La maquette prevoyait 8px ici, mais les
+   opt-ins y tenaient sur deux lignes ; en une seule ligne l'ecart avec la
+   case "conditions" (22px) devenait visible. */
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Note commune aux trois opt-ins : alignee a gauche sur les cases a cocher,
+   comme "*champ obligatoire", pour eviter tout decalage dans la colonne. */
+.checkbox-group__note {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.field-group__required {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.quiz-form__privacy {
+  width: var(--col);
+  font-weight: 300;
+  font-size: 12px;
+  line-height: normal;
+}
+
+.quiz-form__privacy a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* ---------- Confirmation affichee dans la page (cf. merci.html) ---------- */
+.quiz-success {
+  position: relative;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 45px;
+  width: var(--card);
+  max-width: 100%;
+  padding: 60px;
+  background: var(--kia-white);
+  text-align: center;
+}
+
+.quiz-success.is-active {
+  display: flex;
+}
+
+.quiz-success h2 {
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 50px;
+}
+
+.quiz-success h2:focus {
+  outline: none;
+}
+
+.quiz-success p {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* ==========================================================================
+   Trois univers
+   ========================================================================== */
+.univers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 80px;
+  background: var(--kia-grey);
+}
+
+/* masquee une fois le quiz termine : elle contient les reponses */
+.univers.is-hidden {
+  display: none;
+}
+
+.univers__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 850px;
+  max-width: 100%;
+  padding: 80px 20px 30px;
+  text-align: center;
+}
+
+.univers__intro h2 {
+  font-family: var(--font-headline);
+  font-weight: 700;
+  font-size: 45px;
+  line-height: normal;
+}
+
+.univers__intro p {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.univers__list {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.push {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+}
+
+.push__media img {
+  width: 589px;
+  height: 363px;
+  object-fit: cover;
+}
+
+.push__media--duo {
+  display: flex;
+}
+
+.push__media--duo img:nth-child(1) {
+  width: 294px;
+  height: 363px;
+}
+
+.push__media--duo img:nth-child(2) {
+  width: 295px;
+  height: 363px;
+}
+
+.push__media--kiadrive {
+  display: flex;
+  width: 589px;
+  height: 363px;
+}
+
+.push__media--kiadrive .push__map {
+  width: 309px;
+  height: 363px;
+  object-fit: cover;
+  background: var(--kia-midnight);
+}
+
+.push__media--kiadrive .push__photo {
+  width: 280px;
+  height: 363px;
+  object-fit: cover;
+  object-position: 30% center;
+}
+
+.push__txt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 413px;
+  flex-shrink: 0;
+}
+
+.push__txt h3 {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: normal;
+}
+
+.push__txt p {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  display: flex;
+  justify-content: center;
+  padding: 45px 206px;
+  background: var(--kia-midnight);
+  color: var(--kia-white);
+}
+
+.site-footer__inner {
+  display: flex;
+  align-items: center;
+  gap: 126px;
+}
+
+.site-footer__links {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.site-footer__links a {
+  color: var(--kia-white);
+  text-decoration: none;
+}
+
+.site-footer__links a:hover {
+  text-decoration: underline;
+}
+
+.site-footer__links .sep {
+  padding: 0 8px;
+}
+
+.site-footer__social {
+  display: flex;
+  gap: 20px;
+}
+
+.site-footer__social a {
+  position: relative;
+  display: block;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.social__bg {
+  width: 30px;
+  height: 30px;
+}
+
+/* Geometrie reprise de la maquette (conteneur 30x30) */
+.social__icon {
+  position: absolute;
+}
+
+.social__icon--fb {
+  top: 7.5px;
+  left: 10.8px;
+  width: 8.12px;
+  height: 15px;
+}
+
+.social__icon--ig {
+  top: 7.5px;
+  left: 7.5px;
+  width: 15px;
+  height: 15px;
+}
+
+.social__icon--x {
+  top: 9px;
+  left: 8.5px;
+  width: 12.5px;
+  height: 12px;
+}
+
+.social__icon--yt {
+  top: 9.83px;
+  left: 7.5px;
+  width: 14.5px;
+  height: 10.18px;
+}
+
+/* ==========================================================================
+   Page Merci (merci.html)
+   ========================================================================== */
+.merci {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* la maquette fait remonter la carte de 140px sur le hero */
+  padding-top: calc(var(--hero-h) - 140px);
+  background: var(--kia-grey);
+}
+
+.merci__img {
+  /* la carte merci remonte de 140px (cf. .merci) et non de --hero-overlap */
+  --overlap: 140px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--hero-h);
+  background: url("../images/hero-chamonix.png") center center / cover no-repeat;
+}
+
+.merci__img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 64.14%, var(--kia-grey) 89.38%);
+}
+
+.merci__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 45px;
+  width: var(--card);
+  max-width: 100%;
+  padding: 60px;
+  background: var(--kia-white);
+  text-align: center;
+}
+
+.merci__card h1 {
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 50px;
+}
+
+.merci__card p {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* Les trois CTA de marque : sur une ligne, repliés si la place manque */
+.merci__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
